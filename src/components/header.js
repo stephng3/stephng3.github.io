@@ -8,23 +8,17 @@ const Header = ({ siteTitle }) => (
     <Navbar light expand="md">
       <Nav className="ml-auto" navbar>
         <NavItem>
-            <Link
-              to="/"
-              className="nav-link">
-              Resume
-            </Link>
+          <Link to="/" className="nav-link">
+            Resume
+          </Link>
         </NavItem>
         <NavItem>
-            <Link
-              to="/portfolio"
-              className="nav-link">
-              Portfolio
-            </Link>
+          <Link to="/portfolio" className="nav-link">
+            Portfolio
+          </Link>
         </NavItem>
         <NavItem>
-          <NavLink href="https://github.com/stephng3">
-            Github
-          </NavLink>
+          <NavLink href="https://github.com/stephng3">Github</NavLink>
         </NavItem>
       </Nav>
     </Navbar>
