@@ -96,10 +96,6 @@ class ResumePage extends Component {
 
 export default ResumePage;
 
-const headerLines = [
-  "Hello, my name is Stephen Ng.",
-  "I am a Year 2 Computer Science undergraduate",
-  "in the Renaissance Engineering Programme. I"];
 const inputBase = 'I do ';
 const inputPlaceholders=[
   'apps',
@@ -107,4 +103,3 @@ const inputPlaceholders=[
   'javascript',
   'consulting'
 ]
-const inputFinal='consulting'

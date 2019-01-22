@@ -3,7 +3,6 @@ import ResumeSection from './resumeSection';
 import FuzzySearch from 'fuzzy-search';
 
 const resume = require('../static/resume.json');
-const categories = require('../static/categories.json');
 const searcher = new FuzzySearch(resume.items,['keywords','category']);
 
 const Resume = ({filter}) => {

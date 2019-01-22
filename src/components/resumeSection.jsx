@@ -1,6 +1,6 @@
 import React from 'react';
 import ResumeItem from './resumeItem';
-import { Row, Col } from 'reactstrap';
+import { Row } from 'reactstrap';
 
 const ResumeSection = ({category, items}) => (<div className="resume-section">
   <Row>
