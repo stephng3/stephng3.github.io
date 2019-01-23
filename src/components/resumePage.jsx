@@ -56,6 +56,7 @@ class ResumePage extends Component {
   }
   stopTypewriter(){
     clearInterval(this.state.intervalId);
+    this.input.current.focus();
   }
   handleChange(e){
     const val = e.target.value;
