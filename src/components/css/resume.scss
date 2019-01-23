@@ -5,6 +5,56 @@
   margin-bottom: 40px;
   border-bottom: 1px solid #edefee
 }
+@media (max-width: 576px) {
+  .page-nav{
+    display: flex;
+    flex-direction: row;
+  }
+
+  .nav-content {
+    display: none;
+  }
+  #resume:before {
+    content: '';
+    margin: 4px;
+    margin-right: 8px;
+    @include ion-md-home(32px, #222);
+  }
+  #portfolio:before {
+    content: '';
+    margin: 4px;
+    margin-right: 8px;
+    @include ion-md-bulb(32px, #222);
+  }
+  #github:before {
+    content: '';
+    margin: 4px;
+    margin-right: 8px;
+    @include ion-logo-github(32px, #222);
+  }
+  .hero h1,
+  .hero span,
+  .hero input {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+}
+
+@media (min-width: 576px) {
+
+  .hero h1,
+  .hero span,
+  .hero input {
+    font-size: 1.8rem;
+    font-weight: 600;
+  }
+}
+
+.hero p{
+  font-size: 1rem;
+  letter-spacing: 4px;
+  margin-bottom: 6px;
+}
 
 .hero {
   display:flex;
@@ -14,19 +64,6 @@
 .hero p,
 .hero h1 {
   width: 100%
-}
-
-.hero p{
-  font-size: 1rem;
-  letter-spacing: 4px;
-  margin-bottom: 6px;
-}
-
-.hero h1,
-.hero span,
-.hero input {
-  font-size: 1.8rem;
-  font-weight: 600;
 }
 
 .hero input {

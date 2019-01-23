@@ -20,12 +20,12 @@ class ResumePage extends Component {
     this.stopTypewriter = this.stopTypewriter.bind(this);
   }
   componentDidMount(){
-    this.input.current.focus();
     const intervalId = setInterval(this.typewriter,100);
     this.setState({intervalId});
   }
   typewriter(){
     if (this.state.start === 10){
+      this.input.current.focus();
       const cur = this.state.input;
       const iter = this.state.iter;
       if (iter !== inputPlaceholders.length){
