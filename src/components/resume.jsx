@@ -1,12 +1,18 @@
 import React from 'react';
 import ResumeSection from './resumeSection';
-import FuzzySearch from 'fuzzy-search';
 
 const resume = require('../static/resume.json');
-const searcher = new FuzzySearch(resume.items,['keywords','category']);
+
+const searcher = (filter) => resume.items.filter(item => matchItem(item,filter))
+
+function matchItem(item,filter) {
+  const searchTerms = [item.category,...item.keywords];
+  const res = searchTerms.filter(term => term.indexOf(filter) === 0);
+  return res.length !== 0;
+}
 
 const Resume = ({filter}) => {
-  let items = searcher.search(filter);
+  let items = searcher(filter);
   if (items.length === 0){
     items = resume.items;
   }

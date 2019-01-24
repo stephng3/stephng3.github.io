@@ -82,7 +82,6 @@ class ResumePage extends Component {
   }
   handleKeyUp(e){
     const complete = ['Tab','Enter']
-    console.log(e.key);
     if (complete.indexOf(e.key) !== -1 && this.state.autocomplete !== 'type something'){
       e.preventDefault();
       this.handleChange({target:{value:this.state.autocomplete}})
@@ -173,8 +172,8 @@ export default ResumePage;
 const inputPlaceholders=[
   'apps',
   'blockchain',
-  'javascript',
-  'consulting'
+  'consulting',
+  'java'
 ]
 const inputBorderStyle={
     content: "",
