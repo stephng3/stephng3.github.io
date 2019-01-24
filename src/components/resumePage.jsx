@@ -27,7 +27,6 @@ class ResumePage extends Component {
     this.stopTypewriter = this.stopTypewriter.bind(this);
     this.calculateBorder = this.calculateBorder.bind(this);
     this.suggestAutocomplete = this.suggestAutocomplete.bind(this);
-    this.onInputFocus = this.onInputFocus.bind(this);
     this.handleKeyUp = this.handleKeyUp.bind(this);
   }
   componentDidMount(){
@@ -36,7 +35,7 @@ class ResumePage extends Component {
   }
   typewriter(){
     if (this.state.start === 10){
-      this.onInputFocus();
+      this.input.current.focus();
       const cur = this.state.input;
       const iter = this.state.iter;
       if (iter !== inputPlaceholders.length){
@@ -68,12 +67,11 @@ class ResumePage extends Component {
   stopTypewriter(){
     clearInterval(this.state.intervalId);
     this.setState({typewriterActive:false});
-    this.onInputFocus();
     setTimeout(this.calculateBorder,20);
     setTimeout(this.suggestAutocomplete,10);
   }
   handleChange(e){
-    const val = e.target.value;
+    const val = e.target.value.toLowerCase();
     this.setState({input:val})
     setTimeout(this.calculateBorder,20);
     if (!this.state.typewriterActive){
@@ -82,9 +80,15 @@ class ResumePage extends Component {
   }
   handleKeyUp(e){
     const complete = ['Tab','Enter']
-    if (complete.indexOf(e.key) !== -1 && this.state.autocomplete !== 'type something'){
-      e.preventDefault();
-      this.handleChange({target:{value:this.state.autocomplete}})
+    if (this.state.autocomplete !== 'type something'){
+      if (complete.indexOf(e.key) !== -1){
+        e.preventDefault();
+        this.handleChange({target:{value:this.state.autocomplete}})
+      }
+      else if (e.key === 'ArrowRight' && this.input.current.selectionEnd === this.state.input.length){
+          e.preventDefault();
+          this.handleChange({target:{value:this.state.autocomplete}})
+      }
     }
   }
   suggestAutocomplete(){
@@ -114,14 +118,6 @@ class ResumePage extends Component {
       inputBorderStyle: Object.assign({},this.state.inputBorderStyle,{width:textWidth})
     })
   }
-  onInputFocus(e){
-    if (e){
-      e.preventDefault();
-    }
-    if (document.activeElement !== this.input.current){
-      this.input.current.focus();
-    }
-  }
   render(){
     return(
       <div>
@@ -136,14 +132,12 @@ class ResumePage extends Component {
                 <span>I do&nbsp;</span>
                 <div className="input-border">
                   <span
-                    style={{opacity:'0',position:"absolute"}}
+                    style={{opacity:'0',position:"absolute",zIndex:'-1'}}
                     ref={this.inputShadow}
-                    onClick={this.onInputFocus}
                     >{this.state.input}</span>
                   <span
-                    style={{opacity:'0.5',position:"absolute"}}
+                    style={{opacity:'0.5',position:"absolute",zIndex:'-1'}}
                     ref={this.autocomplete}
-                    onClick={this.onInputFocus}
                     >{this.state.autocomplete}</span>
                   <input
                     type="text"
