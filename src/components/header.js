@@ -22,6 +22,11 @@ const Header = ({ siteTitle }) => (
             <span className="nav-content" >Github</span>
           </NavLink>
         </NavItem>
+        <NavItem>
+          <NavLink href="mailto:ng.jiayu.stephen@gmail.com" id="email">
+            <span className="nav-content" >Contact</span>
+          </NavLink>
+        </NavItem>
       </Nav>
     </Navbar>
   </div>

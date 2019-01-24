@@ -32,6 +32,12 @@
     margin-right: 8px;
     @include ion-logo-github(32px, #222);
   }
+  #email:before {
+    content: '';
+    margin: 4px;
+    margin-right: 8px;
+    @include ion-md-mail(32px, #222);
+  }
   .hero h1,
   .hero span,
   .hero input {
