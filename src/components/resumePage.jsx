@@ -4,11 +4,14 @@ import { Container } from 'reactstrap';
 import './css/resume.scss'
 import Resume from './resume.jsx'
 
+const keywords = require('../static/keywords.json');
+
 class ResumePage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      input:inputBase,
+      input:'',
+      autocomplete:'',
       iter:0,
       delay:0,
       start:0,
@@ -18,10 +21,14 @@ class ResumePage extends Component {
     };
     this.input = React.createRef();
     this.inputShadow = React.createRef();
+    this.autocomplete = React.createRef();
     this.handleChange = this.handleChange.bind(this);
     this.typewriter = this.typewriter.bind(this);
     this.stopTypewriter = this.stopTypewriter.bind(this);
     this.calculateBorder = this.calculateBorder.bind(this);
+    this.suggestAutocomplete = this.suggestAutocomplete.bind(this);
+    this.onInputFocus = this.onInputFocus.bind(this);
+    this.handleKeyUp = this.handleKeyUp.bind(this);
   }
   componentDidMount(){
     const intervalId = setInterval(this.typewriter,100);
@@ -29,16 +36,15 @@ class ResumePage extends Component {
   }
   typewriter(){
     if (this.state.start === 10){
-      this.input.current.focus();
+      this.onInputFocus();
       const cur = this.state.input;
       const iter = this.state.iter;
       if (iter !== inputPlaceholders.length){
-        const target = inputBase + inputPlaceholders[iter];
+        const target = inputPlaceholders[iter];
         const diff = target.length - cur.length;
         if (diff !== 0){
           const next = target.substring(0,cur.length+1);
           this.handleChange({target:{value:next}});
-          // this.setState({input:next});
         }
         else {
           this.setState({delay:this.state.delay+1});
@@ -47,7 +53,7 @@ class ResumePage extends Component {
               delay:0,
               iter:this.state.iter+1
             });
-            this.handleChange({target:{value:inputBase}});
+            this.handleChange({target:{value:''}});
           }
         }
       }
@@ -62,27 +68,60 @@ class ResumePage extends Component {
   stopTypewriter(){
     clearInterval(this.state.intervalId);
     this.setState({typewriterActive:false});
-    this.input.current.focus();
-    setTimeout(this.calculateBorder,10);
+    this.onInputFocus();
+    setTimeout(this.calculateBorder,20);
+    setTimeout(this.suggestAutocomplete,10);
   }
   handleChange(e){
     const val = e.target.value;
-    if (val.length >= inputBase.length){
-      this.setState({input: e.target.value});
+    this.setState({input:val})
+    setTimeout(this.calculateBorder,20);
+    if (!this.state.typewriterActive){
+      setTimeout(this.suggestAutocomplete,10);
+    }
+  }
+  handleKeyUp(e){
+    const complete = ['Tab','Enter']
+    console.log(e.key);
+    if (complete.indexOf(e.key) !== -1 && this.state.autocomplete !== 'type something'){
+      e.preventDefault();
+      this.handleChange({target:{value:this.state.autocomplete}})
+    }
+  }
+  suggestAutocomplete(){
+    const val = this.state.input;
+    if (val === ''){
+      this.setState({autocomplete:'type something'});
     }
     else {
-      this.setState({input:inputBase})
+      const res = keywords.filter(word => word.indexOf(val) === 0).shift();
+      if (res) {
+        this.setState({autocomplete:res});
+      }
+      else {
+        this.setState({autocomplete:''});
+      }
     }
-    setTimeout(this.calculateBorder,10);
   }
   calculateBorder(){
-    let textWidth = getComputedStyle(this.inputShadow.current)['width'];
+    let textWidth;
     if (!this.state.typewriterActive && textWidth === '0px'){
-      textWidth = '150px';
+      textWidth = getComputedStyle(this.autocomplete.current)['width'];
+    }
+    else {
+      textWidth = getComputedStyle(this.inputShadow.current)['width'];
     }
     this.setState({
       inputBorderStyle: Object.assign({},this.state.inputBorderStyle,{width:textWidth})
     })
+  }
+  onInputFocus(e){
+    if (e){
+      e.preventDefault();
+    }
+    if (document.activeElement !== this.input.current){
+      this.input.current.focus();
+    }
   }
   render(){
     return(
@@ -94,25 +133,35 @@ class ResumePage extends Component {
               <h1>My name is Stephen Ng.</h1>
               <h1>I'm a Computer Science major</h1>
               <h1>in the Renaissance Engineering Programme.</h1>
-              <div className="input-border">
-                <input
-                  type="text"
-                  value={this.state.input}
-                  onChange={this.handleChange}
-                  onClick={this.stopTypewriter}
-                  ref={this.input}
-                  />
-                <div style={this.state.inputBorderStyle}></div>
-                <span
-                  style={{opacity:'0',position:"absolute"}}
-                  ref={this.inputShadow}
-                  >{this.state.input.substring(inputBase.length)}</span>
+              <div className="input-container">
+                <span>I do&nbsp;</span>
+                <div className="input-border">
+                  <span
+                    style={{opacity:'0',position:"absolute"}}
+                    ref={this.inputShadow}
+                    onClick={this.onInputFocus}
+                    >{this.state.input}</span>
+                  <span
+                    style={{opacity:'0.5',position:"absolute"}}
+                    ref={this.autocomplete}
+                    onClick={this.onInputFocus}
+                    >{this.state.autocomplete}</span>
+                  <input
+                    type="text"
+                    value={this.state.input}
+                    onKeyDown={this.handleKeyUp}
+                    onChange={this.handleChange}
+                    onClick={this.stopTypewriter}
+                    ref={this.input}
+                    />
+                  <div style={this.state.inputBorderStyle}></div>
+                </div>
               </div>
             </div>
           </Container>
         </div>
         <Container>
-          <Resume filter={this.state.input.substring(inputBase.length)}/>
+          <Resume filter={this.state.input}/>
         </Container>
       </div>
     )
@@ -121,7 +170,6 @@ class ResumePage extends Component {
 
 export default ResumePage;
 
-const inputBase = 'I do ';
 const inputPlaceholders=[
   'apps',
   'blockchain',
@@ -132,7 +180,6 @@ const inputBorderStyle={
     content: "",
     position: 'absolute',
     bottom: '-2px',
-    marginLeft: '3.6rem',
     height: '2px',
     background: '#222',
 }

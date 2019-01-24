@@ -70,9 +70,18 @@
   width: 100%
 }
 
-.hero .input-border {
+.hero .input-container {
+  display:flex;
   position: relative;
   width:100%;
+}
+
+.input-container span {
+  width: auto;
+}
+
+.input-border {
+  flex-grow: 1;
 }
 
 .hero input {
