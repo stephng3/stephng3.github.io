@@ -35,7 +35,7 @@
   .hero h1,
   .hero span,
   .hero input {
-    font-size: 1.5rem;
+    font-size: 1.5em;
     font-weight: 600;
   }
 
@@ -49,13 +49,13 @@
   .hero h1,
   .hero span,
   .hero input {
-    font-size: 1.8rem;
+    font-size: 1.8em;
     font-weight: 600;
   }
 }
 
 .hero p{
-  font-size: 1rem;
+  font-size: 1em;
   letter-spacing: 4px;
   margin-bottom: 6px;
 }
@@ -70,10 +70,16 @@
   width: 100%
 }
 
+.hero .input-border {
+  position: relative;
+  width:100%;
+}
+
 .hero input {
   border:none;
   outline: none;
   resize: none;
+  padding: 0px;
   width: 100%;
 }
 
@@ -89,14 +95,14 @@
 }
 
 .resume-section {
-  margin-bottom: 50px;
+  margin-bottom: 80px;
 }
 
 .section-title {
   position: relative;
   text-transform: uppercase;
   letter-spacing: 4px;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
   text-align: center;
   width: 100%;
 }
@@ -121,7 +127,7 @@
 }
 
 .resume-right p {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.5em;
 }
 
 .resume-right p:before{
@@ -133,7 +139,7 @@
 
 .title {
   font-weight: bold;
-  font-size: 1.3rem;
+  font-size: 1.3em;
   margin-bottom: 0;
 }
 

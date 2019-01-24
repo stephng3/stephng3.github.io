@@ -23,20 +23,6 @@
       ]
     },
     {
-      "title":"University of California, Berkeley",
-      "subtitle":"Exchange Student",
-      "duration":"Aug 2019 – May 2020",
-      "bullets":[
-        "Concurrent with 3rd year of REP studies"
-      ],
-      "category":"Education",
-      "keywords":[
-        "berkeley",
-        "school",
-        "computer science"
-      ]
-    },
-    {
       "title":"Nanyang Technological University",
       "subtitle":"Renaissance Engineering Programme",
       "duration":"Aug 2017 – Dec 2021 (Expected)",
@@ -47,6 +33,20 @@
       "category":"Education",
       "keywords":[
         "nanyang technological university",
+        "school",
+        "computer science"
+      ]
+    },
+    {
+      "title":"University of California, Berkeley",
+      "subtitle":"Exchange Student",
+      "duration":"Aug 2019 – May 2020",
+      "bullets":[
+        "Concurrent with 3rd year of REP studies"
+      ],
+      "category":"Education",
+      "keywords":[
+        "berkeley",
         "school",
         "computer science"
       ]
