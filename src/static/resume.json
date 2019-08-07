@@ -1,9 +1,34 @@
 {
   "items":[
     {
+      "title":"Yitu Technology",
+      "subtitle":"Algorithm Developer Intern (Computer Vision)",
+      "duration":"May 2019 - Aug 2019",
+      "bullets":[
+        "Improved large-angle facial detection scores by ~27% after creating a face recognition pipeline which generates frontal faces from side views by implementing and augmenting ideas from a CVPR 2019 paper",
+        "Reduced experiment run times and improved GPU utilisation rates by up to 50% by writing a python wrapper around an internal job-runner tool that automatically restarts low-priority jobs killed by scheduler",
+        "Streamlined researcher workflows, allowing direct demos of trained models by creating GUI toolkits for Jupyter"
+      ],
+      "category":"Work Experience",
+      "keywords":[
+        "machine learning",
+        "computer vision",
+        "python",
+        "jupyter",
+        "pytorch",
+        "pandas",
+        "numpy",
+        "keras",
+        "git",
+        "vim",
+        "unix",
+        "matplotlib"
+      ]
+    },
+    {
       "title":"Kommerce",
-      "subtitle":"Blockchain Developer",
-      "duration":"Dec 2018 - Present",
+      "subtitle":"Software Developer Intern (Blockchain)",
+      "duration":"Dec 2018 - Feb 2019",
       "bullets":[
         "Developing trade finance solution on private Hyperledger Fabric chain with Composer, mirroring public Ethereum smart contract",
         "Built flexible data pipelines extracting data from blockchain ledger enabling fast querying of business statistics"
@@ -15,11 +40,7 @@
         "hyperledger",
         "fabric",
         "composer",
-        "developer",
-        "programming",
-        "work",
-        "data",
-        "javascript"
+        "js"
       ]
     },
     {
@@ -27,7 +48,8 @@
       "subtitle":"Renaissance Engineering Programme",
       "duration":"Aug 2017 – Dec 2021 (Expected)",
       "bullets":[
-        "Concurrent degree as Bachelor of Engineering Science (Computer Science) and Master of Science (Technology Management), current Cumulative GPA of 4.82/5.00 (1st Class Honours)",
+        "Concurrent degree as Bachelor of Engineering Science (Computer Science) and Master of Science (Technology Management)",
+        "Current cGPA of 4.77/5.00 (1st Class Honours)",
         "Awarded the Renaissance Engineering Programme Scholarship"
       ],
       "category":"Education",
@@ -42,13 +64,33 @@
       "subtitle":"Exchange Student",
       "duration":"Aug 2019 – May 2020",
       "bullets":[
-        "Concurrent with 3rd year of REP studies"
+        "Concurrent Enrollment Student, Majoring in Computer Science"
       ],
       "category":"Education",
       "keywords":[
         "berkeley",
         "school",
         "computer science"
+      ]
+    },
+    {
+      "title":"MUNInc Webapp",
+      "subtitle":"Searchable directory of all MUNs in Asia (Freelance work)",
+      "duration":"Jun 2019 - Present",
+      "bullets":[
+        "MERN application allowing complex searching and filtering of all MUN events in Asia",
+        "Designed frictionless CMS for users of all technical abilities to use, by accepting and parsing excel files into MongoDB objects to update database"
+      ],
+      "category":"Projects",
+      "keywords":[
+        "web",
+        "js",
+        "mongo",
+        "express",
+        "react",
+        "node",
+        "passport",
+        "freelance"
       ]
     },
     {
@@ -67,7 +109,8 @@
         "computer science",
         "backend",
         "hackathon",
-        "android"
+        "android",
+        "websockets"
       ]
     },
     {
@@ -82,9 +125,9 @@
       "keywords":[
         "java",
         "computer science",
-        "back end",
+        "backend",
         "frontend",
-        "nosql",
+        "firebase",
         "android",
         "apps"
       ]
@@ -99,11 +142,11 @@
       ],
       "category":"Projects",
       "keywords":[
-        "social good",
+        "web",
         "computer science",
-        "front end",
-        "nosql",
-        "javascript"
+        "frontend",
+        "materialize",
+        "js"
       ]
     },
     {
@@ -117,8 +160,7 @@
       "category":"Extra Curricular Activities",
       "keywords":[
         "leadership",
-        "business",
-        "case",
+        "business case",
         "consulting",
         "mentoring"
       ]
@@ -150,8 +192,7 @@
       ],
       "category":"Competitions",
       "keywords":[
-        "business",
-        "case",
+        "business case",
         "consulting"
       ]
     },
@@ -166,8 +207,7 @@
       ],
       "category":"Competitions",
       "keywords":[
-        "business",
-        "case",
+        "business case",
         "consulting"
       ]
     },
@@ -182,8 +222,7 @@
       ],
       "category":"Competitions",
       "keywords":[
-        "business",
-        "case",
+        "business case",
         "consulting"
       ]
     }

@@ -4,7 +4,32 @@ import { Container } from 'reactstrap';
 import './css/resume.scss'
 import Resume from './resume.jsx'
 
-const keywords = require('../static/keywords.json');
+const resume = require('../static/resume.json')
+const suggestionsPool = require('../static/keywords.json')
+
+let keywords = resume.items
+  .map(i => i['keywords'])
+  .reduce((acc, cur) => {
+    for (const kw of cur){
+      acc.add(kw)
+    }
+    return acc
+  }, new Set())
+
+keywords = Array.from(keywords).sort((a,b) => a.length - b.length)
+
+function shuffle(a) {
+  var j, x, i;
+  for (i = a.length - 1; i > 0; i--) {
+    j = Math.floor(Math.random() * (i + 1));
+    x = a[i];
+    a[i] = a[j];
+    a[j] = x;
+  }
+  return a;
+}
+
+const getSuggestions = (n) => shuffle(suggestionsPool).slice(0,n)
 
 class ResumePage extends Component {
   constructor(props) {
@@ -94,10 +119,11 @@ class ResumePage extends Component {
   suggestAutocomplete(){
     const val = this.state.input;
     if (val === ''){
-      this.setState({autocomplete:'type something'});
+      this.setState({autocomplete:getSuggestions(5).join(', ')});
     }
     else {
-      const res = keywords.filter(word => word.indexOf(val) === 0).shift();
+      const words = keywords.filter(word => word.indexOf(val) === 0);
+      const res = words.shift()
       if (res) {
         this.setState({autocomplete:res});
       }
@@ -165,9 +191,9 @@ export default ResumePage;
 
 const inputPlaceholders=[
   'apps',
+  'machine learning',
   'blockchain',
-  'consulting',
-  'java'
+  'consulting'
 ]
 const inputBorderStyle={
     content: "",
