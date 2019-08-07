@@ -30,8 +30,8 @@
       "subtitle":"Software Developer Intern (Blockchain)",
       "duration":"Dec 2018 - Feb 2019",
       "bullets":[
-        "Developing trade finance solution on private Hyperledger Fabric chain with Composer, mirroring public Ethereum smart contract",
-        "Built flexible data pipelines extracting data from blockchain ledger enabling fast querying of business statistics"
+        "Built flexible, unit tested API endpoints extracting data from IBM Hyperledger Fabric blockchain, allowing business analysts to query essential information on health of business",
+        "Eliminated frequent merge conflicts encountered by developers working on functionally seperate components in the same library by refactoring a legacy, tightly-coupled class in client library into interfaces and stubs"
       ],
       "category":"Work Experience",
       "keywords":[
@@ -40,7 +40,9 @@
         "hyperledger",
         "fabric",
         "composer",
-        "js"
+        "js",
+        "mocha",
+        "chai"
       ]
     },
     {
